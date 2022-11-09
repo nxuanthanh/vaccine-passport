@@ -29,6 +29,7 @@ exports.verifyAdminToken = async (req, res, next) => {
     req.admin = admin;
     next();
   } else {
+    console.log("first");
     res.status(401).json("Unauthorized");
   }
 };

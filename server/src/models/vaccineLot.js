@@ -4,7 +4,7 @@ const { schemaOptions } = require("./modelOptions");
 const vaccineLotSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
-    quality: { type: String, required: true },
+    quantity: { type: String, required: true },
     vaccinated: {
       type: Number,
       required: true,

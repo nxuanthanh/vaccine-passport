@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:3000/api
+
+###
+# @name login user
+POST {{baseUrl}}/admin/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "nxthanh@"
+}
+
+###
+# @name get summary data
+GET  {{baseUrl}}/admin/summary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU0NjgxNn0.f_VA_0nK2rnKBXD81hjCUTW3H38qGELgXQXK8tWrE_Y

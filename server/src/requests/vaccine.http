@@ -1,0 +1,44 @@
+@baseUrl = http://localhost:3000/api
+
+###
+# @name create vaccine
+POST {{baseUrl}}/vaccine
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2Nzk2NTE4OX0.bT-ChM7yy1RQtNgwcKU2um8EUoUEzQXErLrFD3ovhrk
+
+{
+    "name": "astrazeneca"
+}
+
+
+###
+# @name Get all vaccine
+
+GET {{baseUrl}}/vaccine
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2Nzk2NTE4OX0.bT-ChM7yy1RQtNgwcKU2um8EUoUEzQXErLrFD3ovhrk
+
+
+###
+# @name Get vaccine by id
+
+GET {{baseUrl}}/vaccine/636b2655d401a6306ea87676
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2Nzk2NTE4OX0.bT-ChM7yy1RQtNgwcKU2um8EUoUEzQXErLrFD3ovhrk
+
+
+###
+# @name update vaccine by id
+
+PUT {{baseUrl}}/vaccine/636b2655d401a6306ea87676
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2Nzk2NTE4OX0.bT-ChM7yy1RQtNgwcKU2um8EUoUEzQXErLrFD3ovhrk
+
+{
+    "name": "Hayat"
+}
+
+
+###
+# @name Delete vaccine by id
+
+DELETE {{baseUrl}}/vaccine/636b2ddf036e278177228089
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2Nzk2NTE4OX0.bT-ChM7yy1RQtNgwcKU2um8EUoUEzQXErLrFD3ovhrk

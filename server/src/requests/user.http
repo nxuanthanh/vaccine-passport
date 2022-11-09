@@ -1,16 +1,6 @@
 @baseUrl = http://localhost:3000/api
 
 ###
-# @name login user
-POST {{baseUrl}}/admin/login
-Content-Type: application/json
-
-{
-    "username": "admin",
-    "password": "nxthanh@"
-}
-
-###
 # @name create user
 POST {{baseUrl}}/user
 Content-Type: application/json
@@ -51,49 +41,42 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3Z
 # @name delete user
 
 DELETE {{baseUrl}}/user/6364bef8d022442b874e59f7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU0NjgxNn0.f_VA_0nK2rnKBXD81hjCUTW3H38qGELgXQXK8tWrE_Y
+
+###
+# @name vaccinated 
+
+POST {{baseUrl}}/user/vaccinated
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU0NjgxNn0.f_VA_0nK2rnKBXD81hjCUTW3H38qGELgXQXK8tWrE_Y
+
+{
+    "userId": "6364e460b63a5632f3507250",
+    "vaccineId": "636b4f6e4570ca354a074002",
+    "vaccineLotId": "636b4f6e4570ca354a074002"
+}
+
+###
+# @name all place of user 
+
+GET {{baseUrl}}/user/6364e460b63a5632f3507250/place
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU0NjgxNn0.f_VA_0nK2rnKBXD81hjCUTW3H38qGELgXQXK8tWrE_Y
 
 
 ###
-# @name create place
-POST {{baseUrl}}/place
+# @name user checkin place 
+
+POST {{baseUrl}}/user/checkin-place
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRlNDYwYjYzYTU2MzJmMzUwNzI1MCIsImlhdCI6MTY2NzU1NjQ0OH0.FGLRw_2Wu2iXW3L4rdDqC6Sh3YG0A48XKEM7OUudYeQ
 
 {
-    "name": "pho co",
-    "address": "ha noi"
+    "placeId": "6364e4ed2f48fa34e7be8d4e"
+
 }
 
-
 ###
-# @name Get all place
+# @name user all place checked in  
 
-GET {{baseUrl}}/place
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU1NzM2NH0.uD7uvsr9Df5xe4y-w9TSaav8WWC3KbsoB23Pu0cVEuU
-
-###
-# @name Get place by id
-
-GET {{baseUrl}}/place/6364e4ed2f48fa34e7be8d4e
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU1NzM2NH0.uD7uvsr9Df5xe4y-w9TSaav8WWC3KbsoB23Pu0cVEuU
-
-###
-# @name update place
-
-PUT {{baseUrl}}/place/6364e4ed2f48fa34e7be8d4e
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU1NzM2NH0.uD7uvsr9Df5xe4y-w9TSaav8WWC3KbsoB23Pu0cVEuU
-
-{
-    "name": "ho tay",
-    "address": "ha noi"
-}
-
-
-###
-# @name Get delete by id
-
-DELETE  {{baseUrl}}/place/6364ec516b7c3bbf70973c02
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU1NzM2NH0.uD7uvsr9Df5xe4y-w9TSaav8WWC3KbsoB23Pu0cVEuU
+GET {{baseUrl}}/user/6364e460b63a5632f3507250/place-visited
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiZWE3ZDAyMjQ0MmI4NzRlNTllYyIsImlhdCI6MTY2NzU0NjgxNn0.f_VA_0nK2rnKBXD81hjCUTW3H38qGELgXQXK8tWrE_Y

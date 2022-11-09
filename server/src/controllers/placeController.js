@@ -6,7 +6,6 @@ exports.create = async (req, res) => {
       ...req.body,
       creator: req.user._id,
     });
-    console.log(newPlace);
 
     const savedPlace = await newPlace.save();
     res.status(201).json(savedPlace);
@@ -67,6 +66,7 @@ exports.update = async (req, res) => {
         $set: req.body,
       }
     );
+
     res.status(200).json(place);
   } catch (error) {
     res.status(500).json(error);

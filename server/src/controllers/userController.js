@@ -1,5 +1,12 @@
 const jwt = require("jsonwebtoken");
-const { User, UserVaccine, UserPlace } = require("../models");
+const {
+  User,
+  UserVaccine,
+  UserPlace,
+  VaccineLot,
+  Vaccine,
+  Place,
+} = require("../models");
 
 exports.create = async (req, res, next) => {
   const { phoneNumber, id } = req.body;
@@ -111,7 +118,71 @@ exports.delete = async (req, res, next) => {
     await UserPlace.deleteMany({ user: id });
     await User.findByIdAndDelete(id);
 
-    res.status(200).json("Deleted");
+    res.status(200).json("Delete user successfully");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+// add vaccinated to user
+
+exports.vaccinated = async (req, res) => {
+  try {
+    const { userId, vaccineId, vaccineLotId } = req.body;
+
+    const newVaccine = new UserVaccine({
+      user: userId,
+      vaccine: vaccineId,
+      vaccineLot: vaccineLotId,
+    });
+
+    const savedUserVaccine = await newVaccine.save();
+
+    await VaccineLot.findOneAndUpdate(
+      { _id: vaccineLotId },
+      { $inc: { vaccinated: +1 } }
+    );
+    savedUserVaccine._doc.vaccine = await Vaccine.findById(vaccineId);
+    savedUserVaccine._doc.vaccineLot = await VaccineLot.findById(vaccineId);
+    res.status(201).json(savedUserVaccine);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+exports.getAllPlace = async (req, res) => {
+  try {
+    const placeList = await Place.find({ creator: req.params.userId });
+
+    res.status(201).json(placeList);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+exports.checkinPlace = async (req, res) => {
+  try {
+    const visit = await UserPlace({
+      user: req.user._id,
+      place: req.body.placeId,
+    });
+
+    const savedUserPlace = await visit.save();
+
+    res.status(201).json(savedUserPlace);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+// place that user visited
+exports.placeVisted = async (req, res) => {
+  try {
+    const visited = await UserPlace.find({
+      user: req.params.userId,
+    }).populate("place");
+
+    res.status(200).json(visited);
   } catch (error) {
     res.status(500).json(error);
   }
