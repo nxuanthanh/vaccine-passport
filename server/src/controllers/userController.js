@@ -39,7 +39,7 @@ exports.create = async (req, res, next) => {
       token,
     });
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 };
 
@@ -55,7 +55,7 @@ exports.getAll = async (req, res, next) => {
 
     res.status(200).json(list);
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 };
 
