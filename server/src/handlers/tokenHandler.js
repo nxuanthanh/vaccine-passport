@@ -1,8 +1,8 @@
 const { verify } = require("jsonwebtoken");
 const { Admin, User } = require("../models");
 
-const tokeDecode = (req) => {
-  const bearerHeader = req.headers["authorization"];
+const tokenDecode = (req) => {
+  const bearerHeader = req.headers.authorization;
 
   if (bearerHeader) {
     const bearer = bearerHeader.split(" ")[1];
@@ -19,7 +19,7 @@ const tokeDecode = (req) => {
 };
 
 exports.verifyAdminToken = async (req, res, next) => {
-  const tokenDecoded = tokeDecode(req);
+  const tokenDecoded = tokenDecode(req);
 
   if (tokenDecoded) {
     const admin = await Admin.findById(tokenDecoded.id);
@@ -29,13 +29,12 @@ exports.verifyAdminToken = async (req, res, next) => {
     req.admin = admin;
     next();
   } else {
-    console.log("first");
     res.status(401).json("Unauthorized");
   }
 };
 
 exports.verifyToken = async (req, res, next) => {
-  const tokenDecoded = tokeDecode(req);
+  const tokenDecoded = tokenDecode(req);
 
   if (tokenDecoded) {
     const admin = await Admin.findById(tokenDecoded.id);
