@@ -3,7 +3,16 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Dashboard, Layout, Login, User, UserCreate } from "./pages";
+import {
+  Dashboard,
+  Layout,
+  Login,
+  User,
+  UserCreate,
+  UserDetail,
+  Vaccine,
+  VaccineDetail,
+} from "./pages";
 
 function App() {
   return (
@@ -14,6 +23,9 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="/user" element={<User />} />
           <Route path="/user/create" element={<UserCreate />} />
+          <Route path="/user/:id" element={<UserDetail />} />
+          <Route path="/vaccine" element={<Vaccine />} />
+          <Route path="/vaccine/:id" element={<VaccineDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

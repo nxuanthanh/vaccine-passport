@@ -17,14 +17,20 @@ function CustomDialog(props) {
       <DialogTitle>
         {title}
         {showIcon && (
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {type === "success" && (
               <CheckCircleOutlined
                 color="success"
                 sx={{ fontSize: "3.5rem" }}
               />
             )}
-            {type === "success" && (
+            {type === "error" && (
               <ErrorOutlineOutlined color="error" sx={{ fontSize: "3.5rem" }} />
             )}
           </Box>

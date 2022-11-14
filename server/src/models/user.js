@@ -3,7 +3,7 @@ const { schemaOptions } = require("./modelOptions");
 
 const userSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true, unique: true },
+    idNumber: { type: String, required: true, unique: true },
     phoneNumber: { type: String, required: true, unique: true },
     fullName: { type: String, required: true },
     address: { type: String },

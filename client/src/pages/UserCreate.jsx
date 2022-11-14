@@ -55,7 +55,7 @@ function UserCreate() {
 
     try {
       const res = await userApi.create(params);
-      console.log(res);
+      setOnSubmit(false);
       navigate(`/user/${res.user.id}`);
     } catch (error) {
       setOnSubmit(false);

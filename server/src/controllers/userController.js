@@ -9,17 +9,17 @@ const {
 } = require("../models");
 
 exports.create = async (req, res, next) => {
-  const { phoneNumber, id } = req.body;
+  const { phoneNumber, idNumber } = req.body;
 
   try {
     let user = await User.findOne({ phoneNumber: phoneNumber });
-
+    console.log(user._id.toString() !== req.params.id);
     if (user)
       return res
         .status(403)
         .json("Phone number already registered for another account");
 
-    user = await User.findOne({ id: id });
+    user = await User.findOne({ idNumber: idNumber });
     if (user)
       return res
         .status(403)
@@ -85,18 +85,18 @@ exports.getOne = async (req, res, next) => {
 };
 
 exports.update = async (req, res, next) => {
-  const { phoneNumber, id } = req.body;
+  const { phoneNumber, idNumber } = req.body;
 
   try {
     let user = await User.findOne({ phoneNumber: phoneNumber });
 
-    if (user)
+    if (user && user._id.toString() !== req.params.id)
       return res
         .status(403)
         .json("Phone number already registered for another account");
 
-    user = await User.findOne({ id: id });
-    if (user)
+    user = await User.findOne({ idNumber: idNumber });
+    if (user && user._id.toString() !== req.params.id)
       return res
         .status(403)
         .json("Id number already registered for another account");

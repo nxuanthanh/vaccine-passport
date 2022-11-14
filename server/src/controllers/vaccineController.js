@@ -8,7 +8,7 @@ exports.create = async (req, res) => {
 
     const savedVaccine = await newVaccine.save();
 
-    savedVaccine._doc.quality = 0;
+    savedVaccine._doc.quantity = 0;
     savedVaccine._doc.vaccinated = 0;
     savedVaccine._doc.vaccineLots = [];
 
@@ -27,8 +27,12 @@ exports.getAll = async (req, res) => {
       const vaccineLots = await VaccineLot.find({
         vaccine: vaccine._id,
       });
-      vaccine._doc.quality = vaccineLots.reduce(
-        (total, item) => total + Number(item.quality),
+      vaccine._doc.quantity = vaccineLots.reduce(
+        (total, item) => total + Number(item.quantity),
+        0
+      );
+      vaccine._doc.vaccinated = vaccineLots.reduce(
+        (total, item) => total + Number(item.vaccinated),
         0
       );
       vaccine._doc.vaccineLots = vaccineLots;
@@ -45,8 +49,8 @@ exports.getOne = async (req, res) => {
     const vaccine = await Vaccine.findById(req.params.id);
     const vaccineLots = await VaccineLot.find({ vaccine: vaccine._id });
 
-    vaccine._doc.quality = vaccineLots.reduce(
-      (total, item) => total + Number(item.quality),
+    vaccine._doc.quantity = vaccineLots.reduce(
+      (total, item) => total + Number(item.quantity),
       0
     );
 
