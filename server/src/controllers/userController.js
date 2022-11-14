@@ -10,10 +10,11 @@ const {
 
 exports.create = async (req, res, next) => {
   const { phoneNumber, idNumber } = req.body;
+  console.log(phoneNumber);
 
   try {
     let user = await User.findOne({ phoneNumber: phoneNumber });
-    console.log(user._id.toString() !== req.params.id);
+
     if (user)
       return res
         .status(403)
@@ -143,7 +144,7 @@ exports.vaccinated = async (req, res) => {
       { $inc: { vaccinated: +1 } }
     );
     savedUserVaccine._doc.vaccine = await Vaccine.findById(vaccineId);
-    savedUserVaccine._doc.vaccineLot = await VaccineLot.findById(vaccineId);
+    savedUserVaccine._doc.vaccineLot = await VaccineLot.findById(vaccineLotId);
     res.status(201).json(savedUserVaccine);
   } catch (error) {
     res.status(500).json(error);

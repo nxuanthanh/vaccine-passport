@@ -7,6 +7,8 @@ import {
   Dashboard,
   Layout,
   Login,
+  Place,
+  PlaceDetail,
   User,
   UserCreate,
   UserDetail,
@@ -26,6 +28,8 @@ function App() {
           <Route path="/user/:id" element={<UserDetail />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/vaccine/:id" element={<VaccineDetail />} />
+          <Route path="/place" element={<Place />} />
+          <Route path="/place/:id" element={<PlaceDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

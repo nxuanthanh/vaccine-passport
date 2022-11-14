@@ -26,6 +26,7 @@ function User() {
       }
     })();
   }, []);
+  console.log(userList);
 
   const tableHeader = [
     {

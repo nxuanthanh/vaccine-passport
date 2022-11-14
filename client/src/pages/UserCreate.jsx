@@ -58,8 +58,9 @@ function UserCreate() {
       setOnSubmit(false);
       navigate(`/user/${res.user.id}`);
     } catch (error) {
+      console.log(error);
       setOnSubmit(false);
-      setDialogText(error.response.data.message);
+      setDialogText(error.message);
       setDialogType("error");
       setDialogOpen(true);
       console.log(error.response);

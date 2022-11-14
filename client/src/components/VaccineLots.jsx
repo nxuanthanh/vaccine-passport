@@ -36,7 +36,7 @@ function VaccineLots({ vaccine, onLotAdded, onLotDeleted, onLotUpdated }) {
     {
       field: "name",
       headerName: "Lot number",
-      width: 200,
+      width: 150,
     },
     {
       field: "quantity",
@@ -55,7 +55,7 @@ function VaccineLots({ vaccine, onLotAdded, onLotDeleted, onLotUpdated }) {
     {
       field: "id",
       headerName: "Availabe",
-      width: 150,
+      width: 100,
       align: "right",
       renderCell: (params) =>
         (params.row.quantity - params.row.vaccinated).toLocaleString("de-dE"),

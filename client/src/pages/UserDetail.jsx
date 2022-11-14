@@ -17,7 +17,7 @@ import QRCode from "react-qr-code";
 import { useParams } from "react-router-dom";
 import { userApi } from "../api";
 import addressList from "../assets/province.json";
-import { CustomDialog, Header } from "../components";
+import { CustomDialog, Header, UserVaccine } from "../components";
 
 function UserDetail() {
   const { id } = useParams();
@@ -31,7 +31,7 @@ function UserDetail() {
     (async () => {
       try {
         const res = await userApi.getOne(id);
-        console.log(res);
+
         setUser(res);
       } catch (error) {
         console.log(err);
@@ -65,6 +65,7 @@ function UserDetail() {
                 onUpdateSuccess={onUpdateSuccess}
               />
             )}
+            {user && <UserVaccine user={user} />}
           </Stack>
         </Grid>
         <Grid item xs={3}>
