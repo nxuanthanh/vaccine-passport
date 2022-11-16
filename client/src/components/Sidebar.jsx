@@ -15,7 +15,7 @@ import {
   Toolbar,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const sidebarItems = [
   { text: "Dashboard", path: "/", icon: <DashboardOutlined /> },
@@ -26,9 +26,9 @@ const sidebarItems = [
 ];
 
 function Sidebar() {
-  const { pathName } = useParams();
+  const location = useLocation();
   const sidebarWidth = 300;
-  const [activeIndex, setactiveIndex] = useState();
+  const [activeIndex, setactiveIndex] = useState(0);
 
   useEffect(() => {
     const activeItem = sidebarItems.findIndex(
@@ -36,7 +36,7 @@ function Sidebar() {
         window.location.pathname.split("/")[1] === item.path.split("/")[1]
     );
     setactiveIndex(activeItem);
-  }, [pathName]);
+  }, [location]);
   return (
     <Drawer
       container={window.document.body}

@@ -50,7 +50,9 @@ function Place() {
       headerName: "User check in last 24h",
       width: 220,
       align: "right",
-      renderCell: (params) => params.value.length,
+      renderCell: (params) => {
+        return params.value.length;
+      },
     },
     { field: "address", headerName: "Address", flex: 1 },
   ];

@@ -26,27 +26,6 @@ function UserVaccine({ user }) {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [onAddVaccinated, setOnAddVaccinated] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await vaccineApi.getAll();
-        setVaccineList(res);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (!selectedVaccine) {
-      setVaccineLots([]);
-      setSelectedLot(null);
-      return;
-    }
-
-    setVaccineLots(selectedVaccine.vaccineLots);
-  }, [selectedVaccine]);
-
   const tableHeader = [
     {
       field: "vaccine",
@@ -76,6 +55,28 @@ function UserVaccine({ user }) {
         moment(params.value).format("DD-MM-YYYY HH:mm:ss"),
     },
   ];
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await vaccineApi.getAll();
+        console.log(res);
+        setVaccineList(res);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (!selectedVaccine) {
+      setVaccineLots([]);
+      setSelectedLot(null);
+      return;
+    }
+
+    setVaccineLots(selectedVaccine.vaccineLots);
+  }, [selectedVaccine]);
 
   const closeAddDialog = () => {
     setSelectedVaccine(null);

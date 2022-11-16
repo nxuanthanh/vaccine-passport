@@ -9,13 +9,13 @@ import {
   Grid,
   Stack,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CustomDialog, Header } from "../components";
-import addressList from "../assets/province.json";
 import { userApi } from "../api";
+import addressList from "../assets/province.json";
+import { CustomDialog, Header } from "../components";
 
 function UserCreate() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function UserCreate() {
   const [nameErr, setNameErr] = useState(false);
   const [phone, setPhone] = useState("");
   const [phoneErr, setPhoneErr] = useState(false);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState();
   const [addressErr, setAddressErr] = useState(false);
   const [idCard, setIdCard] = useState("");
   const [idCardErr, setIdCardErr] = useState(false);
@@ -141,9 +141,9 @@ function UserCreate() {
                           autoComplete: "new-password",
                         }}
                         error={addressErr}
-                        value={address}
                       />
                     )}
+                    value={address}
                     onChange={(e, newValue) => setAddress(newValue)}
                   />
                 </FormControl>

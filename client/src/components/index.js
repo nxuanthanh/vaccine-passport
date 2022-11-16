@@ -5,3 +5,6 @@ export { default as Header } from "./Header";
 export { default as CustomDialog } from "./CustomDialog";
 export { default as VaccineLots } from "./VaccineLots";
 export { default as UserVaccine } from "./UserVaccine";
+export { default as UserVaccinated } from "./UserVaccinated";
+export { default as UserInfo } from "./UserInfo";
+export { default as VaccineCreateModal } from "./VaccineCreateModal";
